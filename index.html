@@ -68,27 +68,23 @@ Night (11pm to 5am)
     myDate = new Date();
 	myHour = myDate.getHours();
 
-	if(myHour < 12 ) {
+	if(myHour >= 5 && myHour < 12 ) {
 		//alert("good morning?");
 		mySentence = "Good Morning!";
-		myColor = "purple"
-	/*
-	else if(myHour){
-
-	mySentence = "Good Evening!";
+		myColor = "purple";
+	}
+	else if(myHour > 12 && myHour < 18) {
+	
+	mySentence = "Good Afternoon!";
 	myColor = "pink";
 	}
-
-	else if(myHour){
-		myStentence = "Good Night!";
-		myColor = "navy";
+	else if(myHour >= 18 && myHour < 23) {
+		myStentence = "Good Evening!";
+		myColor = "lightblue";
 	}
-*/
-}
 	else{
-		//alert("good afternoon");
-		mySentence = "Good Afternoon!";
-		myColor = "lightblue"
+		mySentence = "Good Night!";
+		myColor = "navy";
 	}
 	
 	document.getElementById("my-greeting").innerHTML = mySentence;
@@ -102,35 +98,11 @@ Night (11pm to 5am)
 	// Evening (6pm to 11pm)
 	// Night (11pm to 5am)
 		
+
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-document.getElementById("html-checker").setAttribute("href","https://validator.w3.org/nu/?doc=" + location.href);
+	document.getElementById("html-checker").setAttribute("href","https://validator.w3.org/nu/?doc=" + location.href);
     document.getElementById("css-checker").setAttribute("href","https://jigsaw.w3.org/css-validator/validator?uri=" + location.href);  
  </script>
 </body>
