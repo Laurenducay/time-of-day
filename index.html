@@ -58,6 +58,23 @@
 		h1.masthead {
 			margin-top:0;
 		}
+		.time-icon {
+			display: inline-block;
+			background-color: rgb(231, 204, 204);
+			border-radius: 5px;
+			text-align: center;
+			padding: 2px 6px;
+			color: black;
+		}
+		#timeText {
+			font-size: 16px;
+			font-weight: normal;
+		}
+		#dayText {
+			font-size: 14px;
+			font-weight: 400;
+			color: black;
+		}
 		footer {
 			text-align:center;
 			clear:both; /* ride below all items */
@@ -82,6 +99,12 @@
 	  <img src="http://dummyimage.com/300x400" alt="Time of Day Image" id="my-image">
 	</div>
      <footer>
+		<div id="timeIcon" class="time-icon">
+			<span id="timeText"></span>
+			<span id="dayText"></span>
+		</div>
+
+
       <p><small>&copy; 2022 by 
           Lauren Ducay, All Rights Reserved ~ 
           <a id="html-checker" href="#" target="_blank">Check HTML</a> ~ 
@@ -102,6 +125,7 @@ Night (11pm to 5am)
 
 
 */
+
     myDate = new Date();
 	myHour = myDate.getHours();
 	myDay = myDate.getDay();
@@ -113,7 +137,7 @@ Night (11pm to 5am)
 		imageTime = "images/morning.jpg";
 		h1Color = "#f5f1ff";
 		bodyColor = "#f5f1ff";
-		
+		iconColor = "#f5f1ff";
 	}
 	else if(myHour >= 12 && myHour < 18) {
 		//afternoon output
@@ -122,6 +146,7 @@ Night (11pm to 5am)
 		imageTime = "images/afternoon.jpg"; 
 		h1Color = "#e3fac8";
 		bodyColor = "#e3fac8";
+		iconColor = "#e3fac8";
 	}
 	else if(myHour >= 18 && myHour < 23) {
 		//evening output
@@ -130,7 +155,7 @@ Night (11pm to 5am)
 		imageTime = "images/evening.jpg";
 		h1Color = "#fdd1e4";
 		bodyColor = "#fdd1e4";
-	
+		iconColor = "#fdd1e4";
 	}
 	else{
 		//night output
@@ -139,6 +164,7 @@ Night (11pm to 5am)
 		imageTime = "images/night.jpg";
 		h1Color = "#688e91";
 		bodyColor = "#688e91";
+		iconColor = "#688e91";
 	}
 	
 	/*if else for what day it is*/
@@ -171,8 +197,15 @@ Night (11pm to 5am)
 	document.getElementById("my-image").src = imageTime;
 	document.querySelector('h1.masthead').style.backgroundColor = h1Color;
 	document.querySelector('.text-container').style.backgroundColor = bodyColor;
-
-
+	document.getElementById("timeIcon").style.backgroundColor = iconColor;
+	
+	function updateTime() {
+		const now = new Date();
+		document.getElementById("timeText").textContent = now.toLocaleTimeString([], {hour:'2-digit', minute: '2-digit'});
+		document.getElementById("dayText").textContent = now.toLocaleTimeString([], {weekday: 'long' });
+	}
+	setInterval(updateTime, 1000);
+	updateTime();
 
 		
 	document.getElementById("html-checker").setAttribute("href","https://validator.w3.org/nu/?doc=" + location.href);
